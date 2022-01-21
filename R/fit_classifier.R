@@ -1,5 +1,11 @@
 #' Fit dummy classifier and Logistic regression models 
 #'
+#' @param train_df dataframe that will be used to train the model
+#' @param target_col The column that needs to be classified as a string
+#' @param numeric_feats The numeric columns as a list
+#' @param categorical_features The categorical columns as a list
+#' @param cv The number of crossvalidation folds as an integer
+#'
 #' @return A data frame
 #' @export
 #'

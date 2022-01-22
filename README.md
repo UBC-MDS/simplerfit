@@ -47,7 +47,7 @@ devtools::install_github("UBC-MDS/simplerfit")
 
 ## Contributors
 
-This python package was developed by the following Master of Data Science program candidates at the University of the British Columbia:
+This R package was developed by the following Master of Data Science program candidates at the University of the British Columbia:
 
 - Mohammadreza Mirzazadeh [@rezam747](https://github.com/rezam747)
 - Zihan Zhou              [@zzhzoe](https://github.com/zzhzoe)

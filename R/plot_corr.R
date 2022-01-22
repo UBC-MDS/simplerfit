@@ -3,7 +3,7 @@
 
 #' @param data a dataframe
 #' @param corr type of correlation: 'spearman', 'kendall' or 'pearson'
-#' @return corr_plotc, a ggplot chart object
+#' @return corr_plot, a ggplot chart object
 #' @export
 #'
 #' @examples

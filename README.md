@@ -21,7 +21,9 @@ This package helps data scientists to clean the data, perform basic EDA, visuali
 | fit_regressor     | `train_df`, `target_col`, `numeric_feats`, `categorical_feats`, `text_col`, `cv`           | `dataframe`                   | Preprocesses the data, fits baseline model(`Dummy Regressor`) and `Ridge` with default setup and returns model scores in the form of a dataframe               |
 | fit_classifier    | `train_df` ,  `target_col` ,  `numeric_feats` ,  `categorical_feats` ,  `text_col` ,  `cv` | `dataframe`                   | Preprocesses the data, fits baseline model(`Dummy Classifier`) and `Logistic Regression` with default setup and returns model scores in the form of a dataframe|
 
-
+### Our Package in R Ecosystem
+---
+There exists a subset of our package as standalone packages, namely [autoReg](https://cran.r-project.org/web/packages/autoReg/index.html), [brinton](https://cran.r-project.org/web/packages/brinton/index.html), [correlationfunnel](https://cran.r-project.org/web/packages/correlationfunnel/index.html), [clean](https://cran.r-project.org/web/packages/clean/index.html). But these packages only do the EDA or just making summary tables for descriptive statistics based on linear regression. But with our package, we aim to do all the basic steps of a ML pipeline and save the data scientist's time and effort by cleaning, preprocessing, returning grpahical visualisations from EDA and providing an insight about the basic model performances, after which the user can decide which other models to use.
 
 ## Installation
 

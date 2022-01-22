@@ -11,10 +11,16 @@ This package helps data scientists to clean the data, perform basic EDA, visuali
 
 
 ## Functions
-1. `clean_data`: Loads and cleans the dataset, removes NA rows, strip extra white spaces, etc and returns clean data
-2. `get_eda`: Creates common exploratory analysis visualizations on numeric and categorical columns in the dataset which are provided to it and returns a list of plots requested by the user
-3. `fit_regressor`: Preprocesses the data, fits baseline model(Dummy Regressor) and Ridge with default setup and returns model scores in the form of a dataframe
-4. `fit_classifier`:Preprocesses the data, fits baseline model(Dummy Classifier) and Logistic Regression with default setup and returns model scores in the form of a dataframe
+---
+| Function Name | Input                                                                                      | Output                        | Description                                                                                                                          |
+|---------------|--------------------------------------------------------------------------------------------|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
+| clean_data       | `dataframe`                                                                                | list of 3 dataframes          | Loads and cleans the dataset, removes NA rows, strip extra white spaces, etc  and returns clean dataframe along with `data.info()` , `data.describe()` as dataframes                                                     |
+| plot_distributions       | `dataframe`, `bins`, `dist_cols`, `class_label`              | Altair histogram plot object  | creates numerical distribution plots on either all the numeric columns or the ones provided to it  |
+| plot_corr       | `dataframe`, `corr`              | Altair correlation plot object  | creates creates correlation plot for all the columns in the dataframe |
+| plot_splom       | `dataframe`, `pair_cols`              | Altair SPLOM plot object  | creates SPLOM plot for all the numeric columns in the dataframe or the ones passed by the user |
+| fit_regressor     | `train_df`, `target_col`, `numeric_feats`, `categorical_feats`, `text_col`, `cv`           | `dataframe`                   | Preprocesses the data, fits baseline model(`Dummy Regressor`) and `Ridge` with default setup and returns model scores in the form of a dataframe               |
+| fit_classifier    | `train_df` ,  `target_col` ,  `numeric_feats` ,  `categorical_feats` ,  `text_col` ,  `cv` | `dataframe`                   | Preprocesses the data, fits baseline model(`Dummy Classifier`) and `Logistic Regression` with default setup and returns model scores in the form of a dataframe|
+
 
 
 ## Installation

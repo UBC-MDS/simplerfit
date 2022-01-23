@@ -56,4 +56,4 @@ If you are proposing a feature:
 
 Please note that the simplerfit project is released with a
 [Contributor Code of Conduct](https://github.com/UBC-MDS/simplerfit/blob/main/.github/CONTRIBUTING.md). By contributing to this
-project you agree to abide by its terms.
+project you agree to abide by its terms. 

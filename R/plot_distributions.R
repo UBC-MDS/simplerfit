@@ -6,9 +6,12 @@
 #' @param class_label target col in dataframe of type character
 #' @return chart_numeric, a ggplot chart object
 #' @export
-#'
+
 #' @examples
-#' data <- read_csv("../tests/Spotify_Features.csv")
+#' library(readr)
+#' library(dplyr)
+#' library(tidyverse)
+#' data <- data.frame(age = c(1, 2, 4, 6, 8),acousticness= c(3, 6, 12, 18, 24), loudness= c(3, 6, 12, 18, 24), target=c(20, 30, 12, 0, 2))
 #' plot_distributions(data, bins = 30, hist_cols=c("acousticness", "loudness"), density=TRUE)
 #' plot_distributions(data, bins = 30)
 #' plot_distributions(data, density=TRUE)

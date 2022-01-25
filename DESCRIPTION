@@ -1,24 +1,7 @@
 Package: simplerfit
 Title: Clean data, perform EDA, fit classifier or regressor models and return model performance
 Version: 0.0.0.9000
-Authors@R: c(
-      person(given = "Mohammadreza",
-           family = "Mirzazadeh",
-           role = c("aut"),
-           email = "mrezamirzazadeh@gmail.com"),
-      person(given = "Zihan",
-           family = "Zhou",
-           role = c("aut"),
-           email = "zoe.zzh121@gmail.com"),
-      person(given = "Sanchit",
-           family = "Singh",
-           role = c("aut"),
-           email = "sanchit120496@gmail.com"),    
-      person(given = "Navya",
-           family = "Dahiya",
-           role = c("aut"),
-           email = "navyad265@gmail.com")
-      )
+Authors@R: person("Navya", "Dahiya", , "navyad265@gmail.com", role = c("aut", "cre"))
 Description:This package helps data scientists to clean the data, perform basic EDA, visualize graphical interpretations and analyse performance of the baseline model and basic Classification or Regression models, namely Logistic Regression, Ridge on their data.
 License: MIT + file LICENSE
 Encoding: UTF-8

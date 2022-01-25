@@ -8,7 +8,18 @@
 #'
 #' @examples
 #' data <- read_csv("../tests/Spotify_Features.csv")
-#' splom_plot(data, pair_cols=list("loudness", "acousticness"))
-#' splom_plot(data)
+#' plot_splom(data, cols=c("loudness", "acousticness"))
+#' plot_splom(data)
+library(GGally)
 
-plot_splom <- function(data, pair_cols=NULL){}
+plot_splom <- function(data, cols=NULL){
+  if(!is.null(cols)){
+
+    data <- data |>
+      dplyr::select(cols)
+  }
+
+  splom_plot <- GGally::ggpairs(data |> select_if(is.numeric), progress = FALSE)
+  splom_plot
+}
+

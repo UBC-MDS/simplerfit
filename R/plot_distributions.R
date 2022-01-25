@@ -9,10 +9,33 @@
 #'
 #' @examples
 #' data <- read_csv("../tests/Spotify_Features.csv")
-#' plot_distributions(data, bins = 30, dist_cols=list("acousticness", "loudness"), class_label="target")
+#' plot_distributions(data, bins = 30, hist_cols=c("acousticness", "loudness"), density=TRUE)
 #' plot_distributions(data, bins = 30)
+#' plot_distributions(data, density=TRUE)
 
-plot_distributions <- function(data, bins = 40, dist_cols=NULL, class_label=NULL){
+plot_distributions <- function(df, bins = 40, hist_cols=NULL, density=FALSE){
+  if (!is.null(hist_cols)){
+
+    data_long <-  df|>
+      select_if(is.numeric) |>
+      pivot_longer(hist_cols)
+  }
+  else{
+    data_long <-  df|>
+      select_if(is.numeric) |>
+      pivot_longer(everything())
+  }
 
 
+  if(!density){
+    plot_dist <- ggplot2::ggplot(data_long, ggplot2::aes(x = value))+
+      ggplot2::facet_wrap(~name, scales = "free_x") +
+      ggplot2::geom_histogram(bins=bins) }
+  else{
+    plot_dist <- ggplot2::ggplot(data_long, ggplot2::aes(x = value))+
+      ggplot2::facet_wrap(~name, scales = "free_x") +
+      ggplot2::geom_density(fill="green")
+
+  }
+  plot_dist
 }

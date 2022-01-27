@@ -38,42 +38,42 @@ library(caret)
 #' fit_regressor(df, target_col = 'y', numeric_feats=c('x'))
 #' fit_regressor(df, target_col = 'y')
 
-fit_regressor <- function(train_df, target_col, numeric_feats= NULL, categorical_feats= NULL, cv = 5, set_seed = 123){
+fit_regressor <- function(train_df, target_col= NULL, numeric_feats= NULL, categorical_feats= NULL, cv = 5, set_seed = 123){
   
   #test for input types : 
-
-  test_that("Train_df should be a dataframe", {
-    expect_true(any("data.frame" %in% class(train_df)))
-  })
-  test_that("target_col should be a vector", {
-    expect_true(is.vector(target_col))
-  })
-  test_that("numeric_feats type should be a vector", {
-    expect_true(is.vector(numeric_feats))
-  })
-  test_that("Categorical_feats type should be a vector", {
-    expect_true(is.vector(categorical_feats))
-  })
-  test_that("CV should be a integer number", {
-    expect_true(is.numeric(cv))
-  })
+  
+  if (!is.data.frame(train_df)){
+    stop('Please input a dataframe')
+  }
+  if (is.null(target_col)){
+    stop('Please enter a target column')
+  }
+  if (!is.vector(numeric_feats)){
+    stop('Please enter a list for numeric columns')
+  }
+  if (!is.vector(categorical_feats)){
+    stop('Please enter a list for categorical columns')
+  }
+  
+  #test for input types :
+  
+  if (!all(target_col %in% colnames(select_if(train_df, is.numeric)))){
+    stop('Please enter a target column from numeric columns')
+  }
+  
+  if (!all(numeric_feats %in% colnames(select_if(train_df, is.numeric)))){
+    stop('Please enter numeric feats from numeric ones')
+  }
+  if (!all(categorical_feats %in% colnames(select_if(train_df, negate(is.numeric))))){
+    stop('Please enter a categorical_feats from non numeric column')
+  }
   
   
-  #tests for inputs values
-  
-  # test_that("Train dataframe should be clean", {
-  #   expect_equal(sum(is.na(train_df)), 0)
-  # })
-  # test_that("target_col should be a column from numeric columns", {
-  #   expect_true(all(target_col %in% colnames(select_if(train_df, is.numeric))))
-  #   expect_equal(length(target_col),1)
-  # })
-  # test_that("numeric_feats should be from numeric columns", {
-  #   expect_true(all(numeric_feats %in% colnames(select_if(train_df, is.numeric))))
-  # })
-  # test_that("categorical_feats should be from non numeric columns", {
-  #   expect_true(all(categorical_feats %in% colnames(select_if(train_df, negate(is.numeric)))))
-  # })
+  if(is.null(numeric_feats)) {
+    numeric_feats <- c(colnames(select_if(train_df, is.numeric)))
+  } else {
+    numeric_feats <- numeric_feats
+  }
   
   
   

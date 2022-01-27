@@ -2,7 +2,7 @@
 
 #' @param data a dataframe
 #' @param bins number of bins in the histogram plot; numeric
-#' @param dist_cols a list of numeric cols
+#' @param hist_cols a list of numeric cols
 #' @param class_label target col in dataframe of type character
 #' @return chart_numeric, a ggplot chart object
 #' @export
@@ -17,15 +17,33 @@
 #' plot_distributions(data, density=TRUE)
 
 plot_distributions <- function(df, bins = 40, hist_cols=NULL, density=FALSE){
+
+  if (!is.data.frame(df)){
+    stop('Value provided for df is not a data frame')
+  }
+
+  if (!is.numeric(bins)){
+    stop('Value provided for bins is not numeric')
+  }
+
+  if (!is.null(hist_cols) & !is.vector(hist_cols, mode='character')){
+    stop('Value provided for hist_cols is not a vector')
+  }
+
+  if (!is.logical(density)){
+    stop('Value of density is not a boolean')
+  }
+
+
   if (!is.null(hist_cols)){
 
     data_long <-  df|>
-      select_if(is.numeric) |>
+      dplyr::select_if(is.numeric) |>
       pivot_longer(hist_cols)
   }
   else{
     data_long <-  df|>
-      select_if(is.numeric) |>
+      dplyr::select_if(is.numeric) |>
       pivot_longer(everything())
   }
 

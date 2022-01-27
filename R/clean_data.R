@@ -31,9 +31,9 @@ clean_data <- function(data){
             names(data) <- gsub(" ", "_", names(data))
 
             # Convert colnames to lower case
-            names(data) <- tolower(names(data))
+            if(str_detect(data,"[[:upper:]]") == FALSE){
+            names(data) <- tolower(names(data))}
 
        #Return clean dataframe
        data
 }
-

@@ -11,6 +11,7 @@
 #'
 #' @examples
 #' library(tidyverse)
+#' library(lattice)
 #' library(caret)
 #' library(mltools)
 #' library(data.table)
@@ -21,6 +22,7 @@
 fit_classifier <- function(train_df, target_col, numeric_feats= list(), categorical_feats= list(), cv = 5){
     
     library(dplyr)
+    library(lattice)
     #install.packages("caret")
     library(caret)
     #install.packages("mltools")

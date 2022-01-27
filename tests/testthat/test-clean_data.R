@@ -12,3 +12,10 @@ test_that("clean_data throws an error when the date called with a non-dataframe 
 
 test_that("Drop all rows that have a NaN in any column or not ",
           {expect_error(clean_data("NA"))})
+
+test_that("change extra white spaces from column names, and data to '-'",
+          {expect_error(clean_data("-"))})
+
+test_that("onvert all column names to lower case",
+          {expect_error(clean_data(str_detect(data,"[[:upper:]]") == FALSE))})
+

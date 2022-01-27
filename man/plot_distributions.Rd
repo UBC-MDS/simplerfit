@@ -9,9 +9,9 @@ plot_distributions(df, bins = 40, hist_cols = NULL, density = FALSE)
 \arguments{
 \item{bins}{number of bins in the histogram plot; numeric}
 
-\item{data}{a dataframe}
+\item{hist_cols}{a list of numeric cols}
 
-\item{dist_cols}{a list of numeric cols}
+\item{data}{a dataframe}
 
 \item{class_label}{target col in dataframe of type character}
 }

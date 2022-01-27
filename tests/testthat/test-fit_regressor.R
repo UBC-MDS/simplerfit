@@ -30,14 +30,15 @@ test_fit_regressor <- function() {
   test_that("The Rsqaured of Ridge model is not what it should be", {
     expect_true(round(output_function[["Rsquared"]][3], 2) == 0.38)
   })
-  
-  test_that("Error raising failed", {
-    expect_error(fit_regressor(1 , target_col = 'gdpPercap', categorical_feats=c('continent')), "Train_df should be a dataframe")
-    expect_error(fit_regressor(data, target_col = 1, categorical_feats=c('continent')), "target_col should be a column from numeric columns")
-    expect_error(fit_regressor(data, target_col = 'gdpPercap', categorical_feats=c('year')), "categorical_feats should be from non numeric columns")
-    expect_error(fit_regressor(data, target_col = 'gdpPercap', numeric_feats= c("continent"), categorical_feats=c('country')), "numeric_feats should be from numeric columns")
-  })
-  
+
+  test_that('Expect customized error messages for invalid input types',{
+    expect_error(fit_regressor(1 , target_col = 'gdpPercap', categorical_feats=c('continent')), 'Please input a dataframe')
+    expect_error(fit_regressor(data, target_col = 1, numeric_feats=c("year", "lifeExp", "pop"), categorical_feats=c('continent')), 'Please enter a target column')
+    expect_error(fit_regressor(data, target_col = 'gdpPercap', numeric_feats=c("pop"), categorical_feats=c('year')), 'Please enter a categorical_feats from non numeric column')
+    expect_error(fit_regressor(data, target_col = 'gdpPercap', numeric_feats= c("continent"), categorical_feats=c('country')), 'Please enter numeric feats from numeric ones')
+    })
 }
 
+
+test_fit_regressor()
 

@@ -8,4 +8,10 @@
 #' @examples
 #' df <- clean_data(data)
 
-clean_data <- function(data){}
+clean_data <- function(data){
+            if (is.null(data)) {
+            stop("No argument. Please call data frame with a dataframe as the only argument")}
+            if (!is.data.frame(data)) {
+            stop("Please call data frame with a dataframe as the only argument")}
+     clean_data
+}

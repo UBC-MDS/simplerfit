@@ -18,10 +18,10 @@ test_that('FAILED',{
     test_df <- data[-index,] # Create the test data
     
     
-    #expect_error(fit_classifier(1))
-    #expect_error(fit_classifier(train_df, numeric_feats = list("age"), categorical_feats = list(), cv = 5))
-    #expect_error(fit_classifier(train_df, target_col = "income", categorical_feats = list("occupation"), cv = 5))
-    #expect_error(fit_classifier(train_df, target_col = "income", numeric_feats = list("age"), cv = 5))
+    expect_error(fit_classifier(1))
+    expect_error(fit_classifier(train_df, numeric_feats = list("age"), categorical_feats = list(), cv = 5))
+    expect_error(fit_classifier(train_df, target_col = "income", categorical_feats = list("occupation"), cv = 5))
+    expect_error(fit_classifier(train_df, target_col = "income", numeric_feats = list("age"), cv = 5))
     
     
     test_that('The returned value needs to be a dataframe', {

@@ -21,7 +21,7 @@ test_that('FAILED',{
     expect_error(fit_classifier(train_df, target_col = "income", numeric_feats = list("age"), cv = 5))
     
     
-    test_that('Plot should use Ggally corr and map x to x-axis', {
+    test_that('The returned value needs to be a dataframe', {
         expect_true(is.data.frame(fit_classifier(train_df,
                                                  target_col = 'income',
                                                  numeric_feats = list('age', 'fnlwgt', 'hours.per.week', 'education.num', 'capital.gain', 'capital.loss'),
@@ -30,4 +30,24 @@ test_that('FAILED',{
         
     })
     
+    test_that('Dummy Classifier accuracy is incorrect', {
+        expect_true(fit_classifier(train_df,
+                                   target_col = 'income',
+                                   numeric_feats = list('age', 'fnlwgt', 'hours.per.week', 'education.num', 'capital.gain', 'capital.loss'),
+                                   categorical_feats = list('occupation'),
+                                   cv=5)[[1]] == 0.7601351)
+    })
+    
+    test_that('Logistic Regression accuracy is incorrect', {
+        expect_true(fit_classifier(train_df,
+                                   target_col = 'income',
+                                   numeric_feats = list('age', 'fnlwgt', 'hours.per.week', 'education.num', 'capital.gain', 'capital.loss'),
+                                   categorical_feats = list('occupation'),
+                                   cv=5)[[2]] == 0.8220593)
+    })
+    
+    
 })
+
+
+

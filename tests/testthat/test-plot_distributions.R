@@ -1,6 +1,6 @@
 require(tidyverse)
 
-test_that('Invalid input types',{
+test_that('FAILED',{
 
   df <- read_csv('../data/adult.csv')
   expect_error(plot_distributions(1))

@@ -23,30 +23,23 @@ test_that('FAILED',{
     expect_error(fit_classifier(train_df, target_col = "income", categorical_feats = list("occupation"), cv = 5))
     expect_error(fit_classifier(train_df, target_col = "income", numeric_feats = list("age"), cv = 5))
     
+    inter <- fit_classifier(train_df,
+                            target_col = 'income',
+                            numeric_feats = list('age', 'fnlwgt', 'hours.per.week', 'education.num', 'capital.gain', 'capital.loss'),
+                            categorical_feats = list('occupation'),
+                            cv=5)
+    
     
     test_that('The returned value needs to be a dataframe', {
-        expect_true(is.data.frame(fit_classifier(train_df,
-                                                 target_col = 'income',
-                                                 numeric_feats = list('age', 'fnlwgt', 'hours.per.week', 'education.num', 'capital.gain', 'capital.loss'),
-                                                 categorical_feats = list('occupation'),
-                                                 cv=5)))
-        
+        expect_true(is.data.frame(inter))
     })
     
     test_that('Dummy Classifier accuracy is incorrect', {
-        expect_true(round(fit_classifier(train_df,
-                                   target_col = 'income',
-                                   numeric_feats = list('age', 'fnlwgt', 'hours.per.week', 'education.num', 'capital.gain', 'capital.loss'),
-                                   categorical_feats = list('occupation'),
-                                   cv=5)[[1]], 2) == 0.76)
+        expect_true(round(inter[[1]], 2) == 0.76)
     })
     
     test_that('Logistic Regression accuracy is incorrect', {
-        expect_true(round(fit_classifier(train_df,
-                                   target_col = 'income',
-                                   numeric_feats = list('age', 'fnlwgt', 'hours.per.week', 'education.num', 'capital.gain', 'capital.loss'),
-                                   categorical_feats = list('occupation'),
-                                   cv=5)[[2]], 2) == 0.82)
+        expect_true(round(inter[[2]], 2) == 0.82)
     })
 })
 

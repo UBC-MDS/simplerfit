@@ -1,21 +1,14 @@
-#'Clean_data
-#'Load downloaded data, clean the dataset, strip extra white spaces from column names, convert column names to lower case, remove the NA rows and return clean data
-#' @param  data.frame Data set to clean
+
+#' Clean and return dataframe
+#' Loads dataframe, removes Nan rows, strips whitespaces, converts columns to lowercase and returns a clean dataframe
+#' @param data
 #'
-#' @return data A cleaned and simplified DataFrame of the relevant columns for summary and visualization
+#' @return
 #' @export
 #'
 #' @examples
-#' df <- clean_data(data)
-
-library(tidyverse, quietly = TRUE)
-
-data= tibble(num_legs= c(2, 4, 8, 0),
-             `num_  wings`= c('bad', 'Good', NA, 'bad'),
-             `Num  specimen` = c(10, 2, 1, 8))
-
-
-
+#' library(tidyverse, quietly = TRUE)
+#' data= tibble(num_legs= c(2, 4, 8, 0), num_wings= c('bad', 'Good', NA, 'bad'),Num_specimen = c(10, 2, 1, 8))
 clean_data <- function(data){
 
             if (is.null(data)) {

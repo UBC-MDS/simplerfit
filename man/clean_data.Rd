@@ -2,21 +2,22 @@
 % Please edit documentation in R/clean_data.R
 \name{clean_data}
 \alias{clean_data}
-\title{Clean_data
-Load downloaded data, clean the dataset, strip extra white spaces from column names, convert column names to lower case, remove the NA rows and return clean data}
+\title{Clean and return dataframe
+Loads dataframe, removes Nan rows, strips whitespaces, converts columns to lowercase and returns a clean dataframe}
 \usage{
 clean_data(data)
 }
 \arguments{
-\item{data.frame}{Data set to clean}
+\item{data}{}
 }
 \value{
-data A cleaned and simplified DataFrame of the relevant columns for summary and visualization
+
 }
 \description{
-Clean_data
-Load downloaded data, clean the dataset, strip extra white spaces from column names, convert column names to lower case, remove the NA rows and return clean data
+Clean and return dataframe
+Loads dataframe, removes Nan rows, strips whitespaces, converts columns to lowercase and returns a clean dataframe
 }
 \examples{
-df <- clean_data(data)
+library(tidyverse, quietly = TRUE)
+data= tibble(num_legs= c(2, 4, 8, 0), num_wings= c('bad', 'Good', NA, 'bad'),Num_specimen = c(10, 2, 1, 8))
 }

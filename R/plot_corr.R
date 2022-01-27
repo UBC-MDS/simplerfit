@@ -16,12 +16,25 @@
 #' plot_corr(data)
 
 plot_corr <- function(data, corr='pearson', pair_cols=NULL){
+
+  if (!is.data.frame(data)){
+    stop('Value provided for data is not a data frame')
+  }
+
+  if (!is.null(pair_cols) & !is.vector(pair_cols, mode='character')){
+    stop('Value provided for pair_cols is not a vector')
+  }
+
+  if (!is.character(corr)){
+    stop('Value of density is not a boolean')
+  }
+
   if(!is.null(pair_cols)){
 
     data <- data |>
       dplyr::select(pair_cols)
   }
-  corr_plot <- GGally::ggcorr(data,low = "steelblue", mid = "white", high = "darkred", label=TRUE,method = c("everything", corr))
+  corr_plot <- GGally::ggcorr(data,low = "steelblue", mid = "white", high = "darkred", label=TRUE,method = c("everything", corr)) + ggtitle("Correlation between features")
   corr_plot
 
 }

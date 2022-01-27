@@ -1,3 +1,43 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
-})
+require(lattice)
+library(caret)
+library(readr)
+library(tidyverse)
+library(testthat)
+library(dplyr)
+library(mltools)
+library(data.table)
+library(gapminder)
+
+
+#' Test whether test_baseline_fun can worked as expected
+#'
+#' @return None. the function should not throw an error
+#' @export
+#'
+#' @examples
+#' test_fit_regressor()
+test_fit_regressor <- function() {
+  
+  data <-  gapminder
+  output_function <- fit_regressor(data, target_col="gdpPercap", numeric_feats=c("year", "lifeExp", "pop"), categorical_feats <- c("continent"), cv =5)
+  
+  test_that("Output of function should be dataframe", {
+    expect_true(any("data.frame" %in% class(results)))
+  })
+  test_that("The Rsqaured of linear regression is not what it should be", {
+    expect_true(round(output_function[["Rsquared"]][2], 2) == 0.4)
+  })
+  test_that("The Rsqaured of Ridge model is not what it should be", {
+    expect_true(round(output_function[["Rsquared"]][3], 2) == 0.38)
+  })
+  
+  test_that("Error raising failed", {
+    expect_error(fit_regressor(1 , target_col = 'gdpPercap', categorical_feats=c('continent')), "Train_df should be a dataframe")
+    expect_error(fit_regressor(data, target_col = 1, categorical_feats=c('continent')), "target_col should be a column from numeric columns")
+    expect_error(fit_regressor(data, target_col = 'gdpPercap', categorical_feats=c('year')), "categorical_feats should be from non numeric columns")
+    expect_error(fit_regressor(data, target_col = 'gdpPercap', numeric_feats= c("continent"), categorical_feats=c('country')), "numeric_feats should be from numeric columns")
+  })
+  
+}
+
+

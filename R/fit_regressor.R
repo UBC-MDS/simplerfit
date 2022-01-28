@@ -121,3 +121,7 @@ fit_regressor <- function(train_df, target_col= NULL, numeric_feats= NULL, categ
   
 }
 
+# data <-  gapminder
+# output_function <- fit_regressor(data, target_col="gdpPercap", numeric_feats=c("year", "lifeExp", "pop"), categorical_feats <- c("continent"), cv =5)
+
+

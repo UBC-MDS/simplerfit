@@ -9,9 +9,6 @@ library(data.table)
 library(gapminder)
 
 
-# data <-  gapminder
-# output_function <- fit_regressor(data, target_col="gdpPercap", numeric_feats=c("year", "lifeExp", "pop"), categorical_feats <- c("continent"), cv =5)
-
 test_that("The Rsqaured scores are not what they should be", {
   results <- fit_regressor(gapminder, target_col="gdpPercap", numeric_feats=c("year", "lifeExp", "pop"), categorical_feats = c("continent"), cv =5)
   # expect_true(is.data.frame(results))

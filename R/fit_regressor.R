@@ -31,12 +31,9 @@ library(caret)
 #' library(mltools)
 #' library(data.table)
 #' library(gapminder)
-#' fit_regressor(data, target_col="gdpPercap", numeric_feats=c("pop"), categorical_feats <- c("continent"), cv =5, seed =124)
-#' fit_regressor(data, target_col="gdpPercap", numeric_feats=c("year", "lifeExp", "pop"), categorical_feats <- c("continent"), cv =5, seed =124)
-#' 
-#' df <- data.frame(x = c(1, 2, 4, 6, 8),y = c(3, 6, 12, 18, 24))
-#' fit_regressor(df, target_col = 'y', numeric_feats=c('x'))
-#' fit_regressor(df, target_col = 'y')
+#' fit_regressor(gapminder::gapminder, target_col="gdpPercap", numeric_feats=c("pop"), categorical_feats <- c("continent"), cv =5)
+#' fit_regressor(gapminder::gapminder, target_col="gdpPercap", numeric_feats=c("year", "lifeExp", "pop"), categorical_feats <- c("continent"), cv =5)
+
 
 fit_regressor <- function(train_df, target_col= NULL, numeric_feats= NULL, categorical_feats= NULL, cv = 5, set_seed = 123){
   
@@ -92,7 +89,7 @@ fit_regressor <- function(train_df, target_col= NULL, numeric_feats= NULL, categ
   # train_preprocessed <- train_preprocessed |> select(-target_col)
   
   # Model
-  set.seed(set_seed) 
+  set.seed(123) 
   
   #Dummy regressor
   model_null <- train(gdpPercap ~., data = train_preprocessed, method = "null", 

@@ -1,14 +1,3 @@
-library(Matrix)
-library(mltools)
-library(readr)
-library(tidyverse)
-library(testthat)
-library(dplyr)
-library(data.table)
-library(gapminder)
-library(lattice)
-library(caret)
-
 #' Fit dummy regressor and linear regression models 
 #'
 #' @param train_df dataframe that will be used to train the model
@@ -34,6 +23,16 @@ library(caret)
 #' fit_regressor(gapminder::gapminder, target_col="gdpPercap", numeric_feats=c("pop"), categorical_feats <- c("continent"), cv =5)
 #' fit_regressor(gapminder::gapminder, target_col="gdpPercap", numeric_feats=c("year", "lifeExp", "pop"), categorical_feats <- c("continent"), cv =5)
 
+library(Matrix)
+library(mltools)
+library(readr)
+library(tidyverse)
+library(testthat)
+library(dplyr)
+library(data.table)
+library(gapminder)
+library(lattice)
+library(caret)
 
 fit_regressor <- function(train_df, target_col= NULL, numeric_feats= NULL, categorical_feats= NULL, cv = 5, set_seed = 123){
   

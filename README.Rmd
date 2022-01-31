@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # simplerfit
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/UBC-MDS/simplerfit/workflows/R-CMD-check/badge.svg)](https://github.com/UBC-MDS/simplerfit/actions)
 <!-- badges: end -->
 
 The goal of simplerfit is to ...

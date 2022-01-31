@@ -15,6 +15,7 @@
 #' library(caret)
 #' library(mltools)
 #' library(data.table)
+#' devtools::install_github("jennybc/gapminder")
 #' library(gapminder)
 #' gapminder <- gapminder |> dplyr::filter(continent=="Asia" | continent=="Europe")
 #' gapminder$country <- as.character(gapminder$country)
@@ -22,6 +23,9 @@
 #' gapminder$year <- as.numeric(gapminder$year)
 #' gapminder$pop <- as.numeric(gapminder$pop)
 #' fit_classifier(gapminder, target_col = 'continent', numeric_feats = list('gdpPercap'), categorical_feats = list('country'), cv = 5)
+
+
+
 
 fit_classifier <- function(train_df, target_col, numeric_feats= NULL, categorical_feats= NULL, cv = 5){
     
@@ -79,11 +83,6 @@ fit_classifier <- function(train_df, target_col, numeric_feats= NULL, categorica
     # Combining pre-processed data
     train_preprocessed <- cbind(X_train_numeric, X_train_categorical, y_train)
     
-    # new column for the model
-    # train_preprocessed$target_col_model <- train_preprocessed |> dplyr::select(target_col)
-    # train_preprocessed <- train_preprocessed |> dplyr::select(-target_col)    # train_preprocessed$target_col_model <- train_preprocessed |> dplyr::select(target_col)
-    # train_preprocessed <- train_preprocessed |> dplyr::select(-target_col)
-    # train_preprocessed$target_col_model <- as.factor(train_preprocessed$target_col_model)
     
     # Model
     set.seed(123) 

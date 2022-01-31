@@ -4,25 +4,11 @@
 # simplerfit
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/UBC-MDS/simplerfit/workflows/R-CMD-check/badge.svg)](https://github.com/UBC-MDS/simplerfit/actions)
 <!-- badges: end -->
 
-A R package that cleans the data, does basic EDA and returns scores for basic classification and regression models.
-This package helps data scientists to clean the data, perform basic EDA, visualize graphical interpretations and analyse performance of the baseline model and basic Classification or Regression models, namely Logistic Regression, Ridge on their data.
-
-
-## Functions
----
-| Function Name | Input                                                                                      | Output                        | Description                                                                                                                          |
-|---------------|--------------------------------------------------------------------------------------------|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
-| clean_data       | `dataframe`                                                                                | list of 3 dataframes          | Loads and cleans the dataset, removes NA rows, strip extra white spaces, etc  and returns clean dataframe along with `data.info()` , `data.describe()` as dataframes                                                     |
-| plot_distributions       | `dataframe`, `bins`, `dist_cols`, `class_label`              | Altair histogram plot object  | creates numerical distribution plots on either all the numeric columns or the ones provided to it  |
-| plot_corr       | `dataframe`, `corr`              | Altair correlation plot object  | creates creates correlation plot for all the columns in the dataframe |
-| fit_regressor     | `train_df`, `target_col`, `numeric_feats`, `categorical_feats`, `text_col`, `cv`           | `dataframe`                   | Preprocesses the data, fits baseline model(`Dummy Regressor`) and `Ridge` with default setup and returns model scores in the form of a dataframe               |
-| fit_classifier    | `train_df` ,  `target_col` ,  `numeric_feats` ,  `categorical_feats` ,  `text_col` ,  `cv` | `dataframe`                   | Preprocesses the data, fits baseline model(`Dummy Classifier`) and `Logistic Regression` with default setup and returns model scores in the form of a dataframe|
-
-### Our Package in R Ecosystem
----
-There exists a subset of our package as standalone packages, namely [autoReg](https://cran.r-project.org/web/packages/autoReg/index.html), [brinton](https://cran.r-project.org/web/packages/brinton/index.html), [correlationfunnel](https://cran.r-project.org/web/packages/correlationfunnel/index.html), [clean](https://cran.r-project.org/web/packages/clean/index.html). But these packages only do the EDA or just making summary tables for descriptive statistics based on linear regression. But with our package, we aim to do all the basic steps of a ML pipeline and save the data scientist's time and effort by cleaning, preprocessing, returning grpahical visualisations from EDA and providing an insight about the basic model performances, after which the user can decide which other models to use.
+The goal of simplerfit is to …
 
 ## Installation
 
@@ -40,21 +26,38 @@ And the development version from [GitHub](https://github.com/) with:
 devtools::install_github("UBC-MDS/simplerfit")
 ```
 
-## Usage
+## Example
 
-- TODO
+This is a basic example which shows you how to solve a common problem:
 
-## Contributors
+``` r
+library(simplerfit)
+## basic example code
+```
 
-This R package was developed by the following Master of Data Science program candidates at the University of the British Columbia:
+What is special about using `README.Rmd` instead of just `README.md`?
+You can include R chunks like so:
 
-- Mohammadreza Mirzazadeh [@rezam747](https://github.com/rezam747)
-- Zihan Zhou              [@zzhzoe](https://github.com/zzhzoe)
-- Navya Dahiya            [@nd265](https://github.com/nd265)
-- Sanchit Singh           [@Sanchit120496](https://github.com/Sanchit120496)
+``` r
+summary(cars)
+#>      speed           dist       
+#>  Min.   : 4.0   Min.   :  2.00  
+#>  1st Qu.:12.0   1st Qu.: 26.00  
+#>  Median :15.0   Median : 36.00  
+#>  Mean   :15.4   Mean   : 42.98  
+#>  3rd Qu.:19.0   3rd Qu.: 56.00  
+#>  Max.   :25.0   Max.   :120.00
+```
 
-## License
+You’ll still need to render `README.Rmd` regularly, to keep `README.md`
+up-to-date. `devtools::build_readme()` is handy for this. You could also
+use GitHub Actions to re-render `README.Rmd` every time you push. An
+example workflow can be found here:
+<https://github.com/r-lib/actions/tree/master/examples>.
 
-`simplerfit` was created by Reza Zoe Navya Sanchit. It is licensed under the terms of the MIT license.
+You can also embed plots, for example:
 
+<img src="man/figures/README-pressure-1.png" width="100%" />
 
+In that case, don’t forget to commit and push the resulting figure
+files, so they display on GitHub and CRAN.

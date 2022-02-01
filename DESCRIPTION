@@ -40,4 +40,5 @@ Imports:
     dplyr,
     stringr,
     rlang,
-    stats
+    stats,
+    monomvn

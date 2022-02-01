@@ -16,6 +16,7 @@
 #' library(mltools)
 #' library(data.table)
 #' library(gapminder)
+#' library(stringr)
 #' gapminder <- gapminder |> dplyr::filter(continent=="Asia" | continent=="Europe")
 #' gapminder$country <- as.character(gapminder$country)
 #' gapminder$continent <- as.character(gapminder$continent)
@@ -25,14 +26,7 @@
 
 fit_classifier <- function(train_df, target_col, numeric_feats= NULL, categorical_feats= NULL, cv = 5){
     
-    #library(dplyr)
-    #library(lattice)
-    #install.packages("caret")
-    #library(caret)
-    #install.packages("mltools")
-    #install.packages("data.table")
-    #library(mltools)
-    #library(data.table)
+    formula  = reformulate(".", response=target_col)
     
     if (!is.data.frame(train_df)){
         stop('Please input a dataframe')
@@ -55,7 +49,7 @@ fit_classifier <- function(train_df, target_col, numeric_feats= NULL, categorica
     
     # If numeric features is passed as an empty list
     if(length(numeric_feats) == 0 ) {
-        numeric_feats <- as.list(strsplit(c(colnames(dplyr::select_if(X_train, is.numeric))), " "))
+        numeric_feats <- as.list(stringr::strsplit(c(colnames(dplyr::select_if(X_train, is.numeric))), " "))
     } else {
         numeric_feats <- numeric_feats
     }
@@ -63,7 +57,7 @@ fit_classifier <- function(train_df, target_col, numeric_feats= NULL, categorica
     
     # If categorical features is passed as an empty list
     if(length(categorical_feats) == 0 ) {
-        categorical_feats <- as.list(strsplit(c(colnames(select_if(X_train, is.character))), " "))
+        categorical_feats <- as.list(stringr::strsplit(c(colnames(dplyr::select_if(X_train, is.character))), " "))
     } else {
         categorical_feats <- categorical_feats
     }
@@ -74,30 +68,24 @@ fit_classifier <- function(train_df, target_col, numeric_feats= NULL, categorica
     
     # One hot coding of categorical columns
     X_train[unlist(categorical_feats)] <- lapply(X_train[unlist(categorical_feats)], factor)
-    X_train_categorical <- one_hot(as.data.table(X_train[, unlist(categorical_feats)]))
+    X_train_categorical <- mltools::one_hot(as.data.table(X_train[, unlist(categorical_feats)]))
     
     # Combining pre-processed data
     train_preprocessed <- cbind(X_train_numeric, X_train_categorical, y_train)
     
-    # new column for the model
-    # train_preprocessed$target_col_model <- train_preprocessed |> dplyr::select(target_col)
-    # train_preprocessed <- train_preprocessed |> dplyr::select(-target_col)    # train_preprocessed$target_col_model <- train_preprocessed |> dplyr::select(target_col)
-    # train_preprocessed <- train_preprocessed |> dplyr::select(-target_col)
-    # train_preprocessed$target_col_model <- as.factor(train_preprocessed$target_col_model)
-    
     # Model
     set.seed(123) 
-    lr_model <- train(as.factor(continent) ~., 
-                      data = train_preprocessed, 
-                      method = "glm", 
-                      family = "binomial", 
-                      trControl = trainControl(method = "cv", number = cv, savePredictions=TRUE))
+    lr_model <- caret::train(formula, 
+                             data = train_preprocessed, 
+                             method = "glm", 
+                             family = "binomial", 
+                             trControl = caret::trainControl(method = "cv", number = cv, savePredictions=TRUE))
     
     # Dummy Classifier
-    lr_model_2 <- train(as.factor(continent) ~., 
-                        data = train_preprocessed, 
-                        method = "null", 
-                        trControl = trainControl(method = "cv", number = cv, savePredictions=TRUE))
+    lr_model_2 <- caret::train(formula, 
+                               data = train_preprocessed, 
+                               method = "null", 
+                               trControl = caret::trainControl(method = "cv", number = cv, savePredictions=TRUE))
     
     # Model Accuracy
     

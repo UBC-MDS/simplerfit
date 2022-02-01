@@ -10,13 +10,6 @@
 #' @export
 #'
 #' @examples
-#' library(tidyverse)
-#' library(lattice)
-#' library(caret)
-#' library(mltools)
-#' library(data.table)
-#' library(gapminder)
-#' library(stringr)
 #' gapminder <- gapminder |> dplyr::filter(continent=="Asia" | continent=="Europe")
 #' gapminder$country <- as.character(gapminder$country)
 #' gapminder$continent <- as.character(gapminder$continent)

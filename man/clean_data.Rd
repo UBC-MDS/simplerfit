@@ -18,6 +18,5 @@ Clean and return dataframe
 Loads dataframe, removes Nan rows, strips whitespaces, converts columns to lowercase and returns a clean dataframe
 }
 \examples{
-library(tidyverse, quietly = TRUE)
-data= tibble(num_legs= c(2, 4, 8, 0), num_wings= c('bad', 'Good', NA, 'bad'),Num_specimen = c(10, 2, 1, 8))
+data= tidyr::tibble(num_legs= c(2, 4, 8, 0), num_wings= c('bad', 'Good', NA, 'bad'),Num_specimen = c(10, 2, 1, 8))
 }

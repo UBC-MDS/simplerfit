@@ -15,10 +15,8 @@
 #' plot_distributions(data, density=TRUE)
 
 plot_distributions <- function(data, bins = 40, hist_cols=NULL, density=FALSE){
-  library(readr) 
-  library(dplyr)
-  library(tidyverse)
   
+
   if (!is.data.frame(data)){
     stop('Value provided for df is not a data frame')
   }

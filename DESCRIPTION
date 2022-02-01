@@ -31,6 +31,7 @@ Imports:
     mltools,
     lattice,
     data.table,
-    dplyr
+    devtools,
+    GGally
 Depends: 
     tidyverse

@@ -34,6 +34,7 @@ Imports:
     devtools,
     GGally,
     ggplot2,
-    gapminder
+    gapminder,
+    monomvn
 Depends: 
     tidyverse

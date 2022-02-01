@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-#' gapminder <- gapminder |> dplyr::filter(continent=="Asia" | continent=="Europe")
+#' gapminder <- gapminder::gapminder |> dplyr::filter(continent=="Asia" | continent=="Europe")
 #' gapminder$country <- as.character(gapminder$country)
 #' gapminder$continent <- as.character(gapminder$continent)
 #' gapminder$year <- as.numeric(gapminder$year)

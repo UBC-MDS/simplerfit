@@ -32,6 +32,8 @@ Imports:
     lattice,
     data.table,
     devtools,
-    GGally
+    GGally,
+    ggplot2,
+    gapminder
 Depends: 
     tidyverse

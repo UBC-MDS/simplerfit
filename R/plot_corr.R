@@ -8,9 +8,6 @@
 #' @export
 #'
 #' @examples
-#' library(tidyverse)
-#' library(ggplot2)
-#' library(dplyr)
 #' data <- data.frame(age = c(1, 2, 4, 6, 8),education.num = c(3, 6, 12, 18, 24), target=c(20, 30, 12, 0, 2))
 #' plot_corr(data, corr = 'pearson', pair_cols=c('age', 'education.num'))
 #' plot_corr(data)
@@ -34,7 +31,7 @@ plot_corr <- function(data, corr='pearson', pair_cols=NULL){
     data <- data |>
       dplyr::select(pair_cols)
   }
-  corr_plot <- GGally::ggcorr(data,low = "steelblue", mid = "white", high = "darkred", label=TRUE,method = c("everything", corr)) + ggtitle("Correlation between features")
+  corr_plot <- GGally::ggcorr(data,low = "steelblue", mid = "white", high = "darkred", label=TRUE,method = c("everything", corr)) + ggplot2::ggtitle("Correlation between features")
   corr_plot
 
 }

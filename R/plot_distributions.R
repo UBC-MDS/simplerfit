@@ -3,22 +3,21 @@
 #' @param data a dataframe
 #' @param bins number of bins in the histogram plot; numeric
 #' @param hist_cols a list of numeric cols
-#' @param class_label target col in dataframe of type character
+#' @param density target col in dataframe of type character
 #' @return chart_numeric, a ggplot chart object
 #' @export
 
 #' @examples
-#' library(readr)
-#' library(dplyr)
-#' library(tidyverse)
+
 #' data <- data.frame(age = c(1, 2, 4, 6, 8),acousticness= c(3, 6, 12, 18, 24), loudness= c(3, 6, 12, 18, 24), target=c(20, 30, 12, 0, 2))
 #' plot_distributions(data, bins = 30, hist_cols=c("acousticness", "loudness"), density=TRUE)
 #' plot_distributions(data, bins = 30)
 #' plot_distributions(data, density=TRUE)
 
-plot_distributions <- function(df, bins = 40, hist_cols=NULL, density=FALSE){
+plot_distributions <- function(data, bins = 40, hist_cols=NULL, density=FALSE){
+  
 
-  if (!is.data.frame(df)){
+  if (!is.data.frame(data)){
     stop('Value provided for df is not a data frame')
   }
 
@@ -37,14 +36,14 @@ plot_distributions <- function(df, bins = 40, hist_cols=NULL, density=FALSE){
 
   if (!is.null(hist_cols)){
 
-    data_long <-  df|>
+    data_long <-  data|>
       dplyr::select_if(is.numeric) |>
-      pivot_longer(hist_cols)
+      tidyr::pivot_longer(hist_cols)
   }
   else{
-    data_long <-  df|>
+    data_long <-  data|>
       dplyr::select_if(is.numeric) |>
-      pivot_longer(everything())
+      tidyr::pivot_longer(everything())
   }
 
 

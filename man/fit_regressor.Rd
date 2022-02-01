@@ -2,11 +2,11 @@
 % Please edit documentation in R/fit_regressor.R
 \name{fit_regressor}
 \alias{fit_regressor}
-\title{Fit dummy regressor and linearregression models}
+\title{Fit dummy regressor and linear regression models}
 \usage{
 fit_regressor(
   train_df,
-  target_col,
+  target_col = NULL,
   numeric_feats = NULL,
   categorical_feats = NULL,
   cv = 5
@@ -17,23 +17,19 @@ fit_regressor(
 
 \item{target_col}{The column that needs to be classified as a string}
 
-\item{numeric_feats}{The numeric columns as a list}
+\item{numeric_feats}{The numeric columns as a vector character}
 
-\item{categorical_feats}{The categorical columns as a list}
+\item{categorical_feats}{The categorical columns as a vector character}
 
-\item{cv}{The number of crossvalidation folds as an integer}
+\item{cv}{The number of cross validation folds as an integer}
 }
 \value{
 A data frame
 }
 \description{
-Fit dummy regressor and linearregression models
+Fit dummy regressor and linear regression models
 }
 \examples{
-fit_regressor(data, target_col = 'popularity', categorical_feats=c('genre'))
-fit_regressor(data, target_col = 'popularity', numeric_feats = c('danceability', 'loudness'), categorical_feats=c('genre'), cv=10)
-
-df <- data.frame(x = c(1, 2, 4, 6, 8),y = c(3, 6, 12, 18, 24))
-fit_regressor(df, target_col = 'y', numeric_feats='x')
-fit_regressor(df, target_col = 'y')
+fit_regressor(gapminder::gapminder, target_col="gdpPercap", numeric_feats=c("pop"), categorical_feats <- c("continent"), cv =5)
+fit_regressor(gapminder::gapminder, target_col="gdpPercap", numeric_feats=c("year", "lifeExp", "pop"), categorical_feats <- c("continent"), cv =5)
 }

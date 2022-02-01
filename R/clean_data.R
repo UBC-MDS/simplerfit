@@ -1,14 +1,13 @@
 
 #' Clean and return dataframe
 #' Loads dataframe, removes Nan rows, strips whitespaces, converts columns to lowercase and returns a clean dataframe
-#' @param data
+#' @param data : A raw dataframe
 #'
-#' @return
+#' @return data : clean dataframe
 #' @export
 #'
 #' @examples
-#' library(tidyverse, quietly = TRUE)
-#' data= tibble(num_legs= c(2, 4, 8, 0), num_wings= c('bad', 'Good', NA, 'bad'),Num_specimen = c(10, 2, 1, 8))
+#' data= tidyr::tibble(num_legs= c(2, 4, 8, 0), num_wings= c('bad', 'Good', NA, 'bad'),Num_specimen = c(10, 2, 1, 8))
 clean_data <- function(data){
 
             if (is.null(data)) {
@@ -24,7 +23,7 @@ clean_data <- function(data){
             names(data) <- gsub(" ", "_", names(data))
 
             # Convert colnames to lower case
-            if(str_detect(data,"[[:upper:]]") == FALSE){
+            if(stringr::str_detect(data,"[[:upper:]]") == FALSE){
             names(data) <- tolower(names(data))}
 
        #Return clean dataframe

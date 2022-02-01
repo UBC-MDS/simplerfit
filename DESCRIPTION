@@ -1,7 +1,8 @@
 Package: simplerfit
-Title: Clean data, perform EDA, fit classifier or regressor models and return model performance
+Title: Clean data, perform EDA, fit classifier or regressor models and return model performance scores
 Version: 0.0.0.9000
-Authors@R: c(person(given = "Navya ",
+Authors@R: 
+    c(person(given = "Navya ",
            family = "Dahiya",
            role = c("aut", "cre"),
            email = "navyad265@gmail.com",
@@ -16,20 +17,27 @@ Authors@R: c(person(given = "Navya ",
            person(given = "Zhian",
            family = "Zoe",
            role = "ctb"))
-Description:This package helps data scientists to clean the data, perform basic EDA, visualize graphical interpretations and analyse performance of the baseline model and basic Classification or Regression models, namely Logistic Regression, Ridge on their data.
+Description: This package helps data scientists to clean the data, perform basic EDA, visualize graphical interpretations and analyse performance of the baseline model and basic Classification or Regression models, namely Logistic Regression, Ridge on their data.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
 Suggests: 
+    covr,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
+    readr,
     caret,
     mltools,
-    lattice,
+    GGally,
+    ggplot2,
     data.table,
-    dplyr
-Depends: 
-    tidyverse
+    devtools,
+    tidyr,
+    gapminder,
+    dplyr,
+    stringr,
+    rlang,
+    stats

@@ -19,9 +19,9 @@ fit_classifier(
 
 \item{numeric_feats}{The numeric columns as a list}
 
-\item{cv}{The number of cross validation folds as an integer}
+\item{categorical_feats}{The categorical columns as a list}
 
-\item{categorical_features}{The categorical columns as a list}
+\item{cv}{The number of cross validation folds as an integer}
 }
 \value{
 A data frame
@@ -30,8 +30,10 @@ A data frame
 Fit dummy classifier and Logistic regression models
 }
 \examples{
-library(tidyverse)
-fit_classifier(data, target_col = 'income', categorical_feats=c('occupation'))
-fit_classifier(data, target_col = 'income', numeric_feats = c('age', 'fnlwgt'), categorical_feats=c('genre'), cv=10)
-
+gapminder <- gapminder::gapminder |> dplyr::filter(continent=="Asia" | continent=="Europe")
+gapminder$country <- as.character(gapminder$country)
+gapminder$continent <- as.character(gapminder$continent)
+gapminder$year <- as.numeric(gapminder$year)
+gapminder$pop <- as.numeric(gapminder$pop)
+fit_classifier(gapminder, target_col = 'continent', numeric_feats = list('gdpPercap'), categorical_feats = list('country'), cv = 5)
 }

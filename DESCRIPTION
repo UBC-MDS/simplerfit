@@ -35,6 +35,5 @@ Imports:
     GGally,
     ggplot2,
     gapminder,
-    monomvn
-Depends: 
+    monomvn, 
     tidyverse

@@ -61,7 +61,7 @@ fit_classifier <- function(train_df, target_col, numeric_feats= NULL, categorica
     
     # One hot coding of categorical columns
     X_train[unlist(categorical_feats)] <- lapply(X_train[unlist(categorical_feats)], factor)
-    X_train_categorical <- mltools::one_hot(as.data.table(X_train[, unlist(categorical_feats)]))
+    X_train_categorical <- mltools::one_hot(data.table::as.data.table(X_train[, unlist(categorical_feats)]))
     
     # Combining pre-processed data
     train_preprocessed <- cbind(X_train_numeric, X_train_categorical, y_train)

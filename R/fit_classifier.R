@@ -15,6 +15,7 @@
 #' library(caret)
 #' library(mltools)
 #' library(data.table)
+#' library(devtools)
 #' devtools::install_github("jennybc/gapminder")
 #' library(gapminder)
 #' gapminder <- gapminder |> dplyr::filter(continent=="Asia" | continent=="Europe")

@@ -18,6 +18,7 @@
 #' library(dplyr)
 #' library(mltools)
 #' library(data.table)
+#' library(devtools)
 #' devtools::install_github("jennybc/gapminder")
 #' fit_regressor(gapminder::gapminder, target_col="gdpPercap", numeric_feats=c("pop"), categorical_feats <- c("continent"), cv =5)
 #' fit_regressor(gapminder::gapminder, target_col="gdpPercap", numeric_feats=c("year", "lifeExp", "pop"), categorical_feats <- c("continent"), cv =5)

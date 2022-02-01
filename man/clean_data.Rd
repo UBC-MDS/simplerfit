@@ -8,10 +8,10 @@ Loads dataframe, removes Nan rows, strips whitespaces, converts columns to lower
 clean_data(data)
 }
 \arguments{
-\item{data}{}
+\item{data}{: A raw dataframe}
 }
 \value{
-
+data : clean dataframe
 }
 \description{
 Clean and return dataframe

@@ -36,4 +36,10 @@ Imports:
     ggplot2,
     gapminder,
     monomvn, 
-    tidyverse
+    tidyverse,
+    readr,
+    tidyr,
+    stats,
+    dplyr,
+    rlang,
+    stringr

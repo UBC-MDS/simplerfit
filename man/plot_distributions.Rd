@@ -4,16 +4,16 @@
 \alias{plot_distributions}
 \title{Returns numerical distribution plots on either all the numeric columns or the ones provided to it}
 \usage{
-plot_distributions(df, bins = 40, hist_cols = NULL, density = FALSE)
+plot_distributions(data, bins = 40, hist_cols = NULL, density = FALSE)
 }
 \arguments{
+\item{data}{a dataframe}
+
 \item{bins}{number of bins in the histogram plot; numeric}
 
 \item{hist_cols}{a list of numeric cols}
 
-\item{data}{a dataframe}
-
-\item{class_label}{target col in dataframe of type character}
+\item{density}{target col in dataframe of type character}
 }
 \value{
 chart_numeric, a ggplot chart object
@@ -22,9 +22,6 @@ chart_numeric, a ggplot chart object
 Returns numerical distribution plots on either all the numeric columns or the ones provided to it
 }
 \examples{
-library(readr)
-library(dplyr)
-library(tidyverse)
 data <- data.frame(age = c(1, 2, 4, 6, 8),acousticness= c(3, 6, 12, 18, 24), loudness= c(3, 6, 12, 18, 24), target=c(20, 30, 12, 0, 2))
 plot_distributions(data, bins = 30, hist_cols=c("acousticness", "loudness"), density=TRUE)
 plot_distributions(data, bins = 30)

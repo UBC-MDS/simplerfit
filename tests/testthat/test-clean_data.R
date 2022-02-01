@@ -1,3 +1,4 @@
+
 library(tidyverse, quietly = TRUE)
 
 data= tibble(num_legs= c(2, 4, 8, 0),

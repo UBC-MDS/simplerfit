@@ -1,9 +1,9 @@
 
 #' Clean and return dataframe
 #' Loads dataframe, removes Nan rows, strips whitespaces, converts columns to lowercase and returns a clean dataframe
-#' @param data
+#' @param data : A raw dataframe
 #'
-#' @return
+#' @return data : clean dataframe
 #' @export
 #'
 #' @examples
@@ -24,8 +24,8 @@ clean_data <- function(data){
             names(data) <- gsub(" ", "_", names(data))
 
             # Convert colnames to lower case
-            if(str_detect(data,"[[:upper:]]") == FALSE){
-            names(data) <- tolower(names(data))}
+            if(stringr::str_detect(data,"[[:upper:]]") == FALSE){
+            names(data) <- stringr::tolower(names(data))}
 
        #Return clean dataframe
        data

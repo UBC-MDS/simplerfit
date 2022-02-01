@@ -20,9 +20,6 @@ corr_plot, a ggplot chart object
 Returns correlation plot for all the columns in dataset
 }
 \examples{
-library(tidyverse)
-library(ggplot2)
-library(dplyr)
 data <- data.frame(age = c(1, 2, 4, 6, 8),education.num = c(3, 6, 12, 18, 24), target=c(20, 30, 12, 0, 2))
 plot_corr(data, corr = 'pearson', pair_cols=c('age', 'education.num'))
 plot_corr(data)

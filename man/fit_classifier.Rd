@@ -30,15 +30,7 @@ A data frame
 Fit dummy classifier and Logistic regression models
 }
 \examples{
-library(tidyverse)
-library(lattice)
-library(caret)
-library(mltools)
-library(data.table)
-library(devtools)
-devtools::install_github("jennybc/gapminder")
-library(gapminder)
-gapminder <- gapminder |> dplyr::filter(continent=="Asia" | continent=="Europe")
+gapminder <- gapminder::gapminder |> dplyr::filter(continent=="Asia" | continent=="Europe")
 gapminder$country <- as.character(gapminder$country)
 gapminder$continent <- as.character(gapminder$continent)
 gapminder$year <- as.numeric(gapminder$year)

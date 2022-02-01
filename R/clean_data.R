@@ -7,8 +7,7 @@
 #' @export
 #'
 #' @examples
-#' library(tidyverse, quietly = TRUE)
-#' data= tibble(num_legs= c(2, 4, 8, 0), num_wings= c('bad', 'Good', NA, 'bad'),Num_specimen = c(10, 2, 1, 8))
+#' data= tidyr::tibble(num_legs= c(2, 4, 8, 0), num_wings= c('bad', 'Good', NA, 'bad'),Num_specimen = c(10, 2, 1, 8))
 clean_data <- function(data){
 
             if (is.null(data)) {
@@ -25,7 +24,7 @@ clean_data <- function(data){
 
             # Convert colnames to lower case
             if(stringr::str_detect(data,"[[:upper:]]") == FALSE){
-            names(data) <- stringr::tolower(names(data))}
+            names(data) <- tolower(names(data))}
 
        #Return clean dataframe
        data

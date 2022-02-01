@@ -1,7 +1,8 @@
 Package: simplerfit
-Title: Clean data, perform EDA, fit classifier or regressor models and return model performance
+Title: Clean data, perform EDA, fit classifier or regressor models and return model performance scores
 Version: 0.0.0.9000
-Authors@R: c(person(given = "Navya ",
+Authors@R: 
+    c(person(given = "Navya ",
            family = "Dahiya",
            role = c("aut", "cre"),
            email = "navyad265@gmail.com",
@@ -27,19 +28,16 @@ Suggests:
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
+    readr,
     caret,
     mltools,
-    lattice,
-    data.table,
-    devtools,
     GGally,
     ggplot2,
-    gapminder,
-    monomvn, 
-    tidyverse,
-    readr,
+    data.table,
+    devtools,
     tidyr,
-    stats,
+    gapminder,
     dplyr,
+    stringr,
     rlang,
-    stringr
+    stats

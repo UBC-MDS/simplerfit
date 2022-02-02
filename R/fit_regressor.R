@@ -10,17 +10,12 @@
 #' @export
 #'
 #' @examples
-
-
 #' fit_regressor(gapminder::gapminder, target_col="gdpPercap", numeric_feats=c("pop"), categorical_feats <- c("continent"), cv =5)
 #' fit_regressor(gapminder::gapminder, target_col="gdpPercap", numeric_feats=c("year", "lifeExp", "pop"), categorical_feats <- c("continent"), cv =5)
-
-
 
 fit_regressor <- function(train_df, target_col= NULL, numeric_feats= NULL, categorical_feats= NULL, cv = 5){
 
   #test for input types :
-
   if (!is.data.frame(train_df)){
     stop('Please input a dataframe')
   }
@@ -33,56 +28,61 @@ fit_regressor <- function(train_df, target_col= NULL, numeric_feats= NULL, categ
   if (!is.vector(categorical_feats)){
     stop('Please enter a list for categorical columns')
   }
-
+  
   #test for input types :
 
   if (!all(target_col %in% colnames(dplyr::select_if(train_df, is.numeric)))){
     stop('Please enter a target column from numeric columns')
   }
-  if (!all(numeric_feats %in% colnames(dplyr::select_if(train_df, is.numeric)))){
-    stop('Please enter numeric feats from numeric ones')
-  }
-  if (!all(categorical_feats %in% colnames(dplyr::select_if(train_df, Negate(is.numeric))))){
-    stop('Please enter a categorical_feats from non numeric column')
-  }
-
-
+  
+  X_train <- train_df |> dplyr::select(-target_col)
+  y_train <- train_df |> dplyr::select(target_col)
+  
+  # If numeric features is passed as an empty list
   if(is.null(numeric_feats)) {
-    numeric_feats <- c(colnames(dplyr::select_if(train_df, is.numeric)))
+    numeric_feats <- as.vector(colnames(dplyr::select_if(X_train, is.numeric)))
   } else {
     numeric_feats <- numeric_feats
   }
+  if (!all(numeric_feats %in% colnames(dplyr::select_if(X_train, is.numeric)))){
+    stop('Please enter numeric feats from numeric ones')
+  }
+  
+  # If categorical features is passed as an empty list
+  if(is.null(categorical_feats)) {
+    categorical_feats <- as.vector(colnames(dplyr::select_if(X_train, Negate(is.numeric))))
+  } else {
+    categorical_feats <- categorical_feats
+  }
+  if (!all(categorical_feats %in% colnames(dplyr::select_if(X_train, Negate(is.numeric))))){
+    stop('Please enter a categorical_feats from non numeric column')
+  }
 
+  
   # Scaling numeric columns
-  X_train_numeric <- scale(train_df[numeric_feats])
+  X_train_numeric <- scale(X_train[numeric_feats])
 
   # One hot coding of categorical columns
-  train_df[categorical_feats] <- lapply(train_df[categorical_feats], factor)
-  X_train_categorical <- mltools::one_hot(data.table::as.data.table(train_df[categorical_feats]))
-
-  #y_train
-  y_train <- train_df[target_col]
+  X_train[categorical_feats] <- lapply(X_train[categorical_feats], factor)
+  X_train_categorical <- mltools::one_hot(data.table::as.data.table(X_train[categorical_feats]))
 
   # Combining pre-processed data
   train_preprocessed <- cbind(X_train_numeric, X_train_categorical, y_train)
 
-  #create target_col
-  # train_preprocessed$target_col_model <- train_preprocessed |> select(target_col)
-  # train_preprocessed <- train_preprocessed |> select(-target_col)
-
   # Model
   set.seed(123)
+  formula  = reformulate(".", response=target_col)
 
   #Dummy regressor
-  model_null <- caret::train(gdpPercap ~., data = train_preprocessed, method = "null",
+  model_null <- caret::train(formula , data = train_preprocessed, method = "null",
                       trControl = caret::trainControl(method = "cv", number = cv, savePredictions=TRUE))
 
   #Linear model
-  model_lm <- caret::train(gdpPercap ~., data = train_preprocessed, method = "lm",
+  model_lm <- caret::train(formula , data = train_preprocessed, method = "lm",
                     trControl = caret::trainControl(method = "cv", number = cv, savePredictions=TRUE))
 
   #Ridge
-  model_ridge <- train(gdpPercap ~., data = train_preprocessed, method = "bridge",
+  model_ridge <- train(formula , data = train_preprocessed, method = "bridge",
                        trControl = caret::trainControl(method = "cv", number = cv, savePredictions=TRUE))
 
   #Result dataframe
@@ -99,6 +99,7 @@ fit_regressor <- function(train_df, target_col= NULL, numeric_feats= NULL, categ
   return(results)
 
 }
+fit_regressor(gapminder::gapminder, target_col="gdpPercap", numeric_feats=c("year", "lifeExp", "pop"), categorical_feats = c("continent"), cv =5)
 
 
 

@@ -1,8 +1,9 @@
 
 
 testthat::test_that("The Rsqaured scores are not what they should be", {
-  results <- fit_regressor(gapminder::gapminder, target_col="gdpPercap", numeric_feats=c("year", "lifeExp", "pop"), categorical_feats = c("continent"), cv =5)
-  # expect_true(is.data.frame(results))
+  data <- gapminder::gapminder
+  results <- fit_regressor(data, target_col="gdpPercap", numeric_feats=c("year", "lifeExp", "pop"), categorical_feats = c("continent"), cv =5)
+  expect_true(is.data.frame(results))
   expect_true(round(results[["Rsquared"]][2], 2) == 0.4)
   expect_true(round(results[["Rsquared"]][3], 2) == 0.38)
 })

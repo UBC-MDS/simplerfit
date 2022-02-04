@@ -82,7 +82,7 @@ fit_regressor <- function(train_df, target_col= NULL, numeric_feats= NULL, categ
                     trControl = caret::trainControl(method = "cv", number = cv, savePredictions=TRUE))
 
   #Ridge
-  model_ridge <- train(formula , data = train_preprocessed, method = "bridge",
+  model_ridge <- caret::train(formula , data = train_preprocessed, method = "bridge",
                        trControl = caret::trainControl(method = "cv", number = cv, savePredictions=TRUE))
 
   #Result dataframe
@@ -99,7 +99,6 @@ fit_regressor <- function(train_df, target_col= NULL, numeric_feats= NULL, categ
   return(results)
 
 }
-fit_regressor(gapminder::gapminder, target_col="gdpPercap", numeric_feats=c("year", "lifeExp", "pop"), categorical_feats = c("continent"), cv =5)
 
-
+fit_regressor(gapminder::gapminder, target_col="gdpPercap", numeric_feats=c("year", "lifeExp", "pop"), categorical_feats <- c("continent"), cv =5)
 

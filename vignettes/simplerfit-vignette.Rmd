@@ -2,7 +2,7 @@
 title: "Introduction to simplerfit"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{simplerfit-vignette}
+  %\VignetteIndexEntry{Introduction to simplerfit}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -37,7 +37,7 @@ head(gapminder)
 ### Cleaning the dataframe
 The cleaner function does the basic cleaning of a raw data-frame by removing the empty rows, stripping extra white spaces in the data and converting the column names to lower case. 
 ```{r}
-clean_df <- clean_data(gapminder::gapminder)
+clean_df <- clean_data(gapminder)
 ```
 
 ### EDA

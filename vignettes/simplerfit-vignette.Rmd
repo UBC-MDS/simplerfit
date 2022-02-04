@@ -19,12 +19,12 @@ library(simplerfit)
 ```
 
 ## Brief Introduction
-Simplerfit is function that will help reduce effort in section of a model building pipeline. There are six functions that are included in this R package which are described in more detail below. Seasoned and amateur data scientists' can use this package in their pipelines to make the task more efficient.
+Simplerfit is a package that will help reduce effort in each section of a model building pipeline. There are five functions that are included in this R package which are described in more detail below. Seasoned and amateur data scientists' can use this package in their pipelines to make their tasks more efficient.
 
 This document introduces you to simplerfit's functions and how to use them.
 
 ## Data
-To explore the basic functionality of simplerfit, the dataset `gapminder`. If you want to vizualise the data, before going through the functions, use the code below to load it.
+To explore the basic functionality of simplerfit we use the dataset `gapminder`. If you want to visualize the data, before going through the functions, use the code below to load it.
 
 ```{r}
 # load gapminder dataset
@@ -38,6 +38,7 @@ head(gapminder)
 The cleaner function does the basic cleaning of a raw data-frame by removing the empty rows, stripping extra white spaces in the data and converting the column names to lower case. 
 ```{r}
 clean_df <- clean_data(gapminder)
+head(clean_df)
 ```
 
 ### EDA
@@ -45,17 +46,17 @@ The functions take in the cleaned data set to create a correlation plot and a di
 ```{r}
 plot_corr(clean_df, corr = 'pearson', pair_cols=c('lifeexp', 'pop', 'gdppercap'))
 
-plot_distributions(clean_df, bins = 30, hist_cols=c("gdppercap", "pop"), density=TRUE)
+plot_distributions(clean_df, bins = 30, hist_cols=c("gdppercap", "pop"))
 ```
 
 ### Regression
 If the problem is of a regression nature, the RMSE scores of dummy regressor, linear regressor and ridge are compared
 ```{r fig.width=7, fig.height=4}
-fit_regressor(clean_df, 
+suppressWarnings(fit_regressor(clean_df, 
               target_col="gdppercap", 
               numeric_feats=c("year", "lifeexp", "pop"), 
               categorical_feats <- c("continent"), 
-              cv =5)
+              cv =5))
 ```
 
 ### Classification
@@ -67,10 +68,10 @@ clean_df$continent <- as.character(clean_df$continent)
 clean_df$year <- as.numeric(clean_df$year)
 clean_df$pop <- as.numeric(clean_df$pop)
 
-fit_classifier(clean_df, 
+suppressWarnings(fit_classifier(clean_df, 
                target_col = 'continent', 
                numeric_feats = list('gdppercap'), 
                categorical_feats = list('country'), 
-               cv = 5)
+               cv = 5))
 ```
 

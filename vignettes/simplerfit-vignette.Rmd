@@ -19,12 +19,12 @@ library(simplerfit)
 ```
 
 ## Brief Introduction
-Simplerfit is function that will help reduce effort in section of a model building pipeline. There are six functions that are included in this R package which are described in more detail below. Seasoned and amateur data scientists' can use this package in their pipelines to make the task more efficient.
+Simplerfit will help reduce effort in each section of a model building pipeline. There are five functions that are included in this R package which are described in more detail below. Seasoned and amateur data scientists' can use this package in their pipelines to make their tasks more efficient.
 
 This document introduces you to simplerfit's functions and how to use them.
 
 ## Data
-To explore the basic functionality of simplerfit, the dataset `gapminder`. If you want to vizualise the data, before going through the functions, use the code below to load it.
+To explore the basic functionality of simplerfit we use the dataset `gapminder`. If you want to visualize the data, before going through the functions, use the code below to load it.
 
 ```{r}
 # load gapminder dataset

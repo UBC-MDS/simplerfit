@@ -1,0 +1,77 @@
+---
+title: "Introduction to simplerfit"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{simplerfit-vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(simplerfit)
+```
+
+## Brief Introduction
+Simplerfit is function that will help reduce effort in section of a model building pipeline. There are six functions that are included in this R package which are described in more detail below. Seasoned and amateur data scientists' can use this package in their pipelines to make the task more efficient.
+
+This document introduces you to simplerfit's functions and how to use them.
+
+## Data
+To explore the basic functionality of simplerfit, the dataset `gapminder`. If you want to vizualise the data, before going through the functions, use the code below to load it.
+
+```{r setup}
+# read image in via JPEG
+library(gapminder)
+gapminder <- gapminder
+head(gapminder)
+```
+
+## Function Demonstration
+
+### Cleaning the dataframe
+The cleaner function does the basic cleaning of a raw data-frame by removing the empty rows, stripping extra white spaces in the data and converting the column names to lower case. 
+```{r}
+clean_df <- clean_data(gapminder::gapminder)
+```
+
+### EDA
+The functions take in the cleaned data set to create a correlation plot and a distribution plot.
+```{r}
+plot_corr(clean_df, corr = 'pearson', pair_cols=c('lifeexp', 'pop'))
+
+plot_distributions(clean_df, bins = 30, hist_cols=c("gdppercap", "pop"), density=TRUE)
+```
+
+### Regression
+If the problem is of a regression nature, the RMSE scores of dummy regressor, linear regressor and ridge are compared
+```{r fig.width=7, fig.height=4}
+fit_regressor(clean_df, 
+              target_col="gdppercap", 
+              numeric_feats=c("year", "lifeexp", "pop"), 
+              categorical_feats <- c("continent"), 
+              cv =5)
+```
+
+### Classification
+If the problem is of a classification nature, the accuracy scores of dummy classifier and logistic regression are compared
+```{r}
+clean_df <- clean_df |> dplyr::filter(continent=="Asia" | continent=="Europe")
+clean_df$country <- as.character(clean_df$country)
+clean_df$continent <- as.character(clean_df$continent)
+clean_df$year <- as.numeric(clean_df$year)
+clean_df$pop <- as.numeric(clean_df$pop)
+
+fit_classifier(clean_df, 
+               target_col = 'continent', 
+               numeric_feats = list('gdppercap'), 
+               categorical_feats = list('country'), 
+               cv = 5)
+```
+

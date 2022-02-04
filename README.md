@@ -4,6 +4,10 @@
 # simplerfit
 
 [![codecov](https://codecov.io/gh/UBC-MDS/simplerfit/branch/main/graph/badge.svg?token=4ExBXuJ9k5)](https://codecov.io/gh/UBC-MDS/simplerfit)
+[![test-coverage](https://github.com/UBC-MDS/simplerfit/actions/workflows/test-coverage.yaml/badge.svg)](https://github.com/UBC-MDS/simplerfit/actions/workflows/test-coverage.yaml)
+[![R-CMD-check](https://github.com/UBC-MDS/simplerfit/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/UBC-MDS/simplerfit/actions/workflows/R-CMD-check.yaml)
+[![pkgdown](https://github.com/UBC-MDS/simplerfit/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/UBC-MDS/simplerfit/actions/workflows/pkgdown.yaml)
+
 
 A R package that cleans the data, does basic EDA and returns scores for basic classification and regression models.
 This package helps data scientists to clean the data, perform basic EDA, visualize graphical interpretations and analyse performance of the baseline model and basic Classification or Regression models, namely Logistic Regression, Ridge on their data.

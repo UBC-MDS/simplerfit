@@ -71,7 +71,7 @@
 <div class="page-header"><h1 id="simplerfit">simplerfit<a class="anchor" aria-label="anchor" href="#simplerfit"></a>
 </h1></div>
 
-<p>A R package that cleans the data, does basic EDA and returns scores for basic classification and regression models. This package helps data scientists to clean the data, perform basic EDA, visualize graphical interpretations and analyse performance of the baseline model and basic Classification or Regression models, namely Logistic Regression, Ridge on their data.</p>
+<p>R package that cleans the data, does basic EDA and returns scores for basic classification and regression models. This package helps data scientists clean the data, perform basic EDA, visualize graphical interpretations and analyse performance of the baseline model and basic Classification or Regression models, namely Logistic Regression, Ridge on their data.</p>
 <div class="section level2">
 <h2 id="functions">Functions<a class="anchor" aria-label="anchor" href="#functions"></a>
 </h2>
@@ -100,21 +100,21 @@
 <td>
 <code>dataframe</code>, <code>bins</code>, <code>dist_cols</code>, <code>class_label</code>
 </td>
-<td>Altair histogram plot object</td>
-<td>creates numerical distribution plots on either all the numeric columns or the ones provided to it</td>
+<td>Ggplot histogram plot object</td>
+<td>Creates numerical distribution plots on either all the numeric columns or the ones provided to it</td>
 </tr>
 <tr class="odd">
 <td>plot_corr</td>
 <td>
 <code>dataframe</code>, <code>corr</code>
 </td>
-<td>Altair correlation plot object</td>
-<td>creates creates correlation plot for all the columns in the dataframe</td>
+<td>Ggplot correlation plot object</td>
+<td>Creates correlation plot for all the columns in the dataframe</td>
 </tr>
 <tr class="even">
 <td>fit_regressor</td>
 <td>
-<code>train_df</code>, <code>target_col</code>, <code>numeric_feats</code>, <code>categorical_feats</code>, <code>text_col</code>, <code>cv</code>
+<code>train_df</code>, <code>target_col</code>, <code>numeric_feats</code>, <code>categorical_feats</code>, <code>cv</code>
 </td>
 <td><code>dataframe</code></td>
 <td>Preprocesses the data, fits baseline model(<code>Dummy Regressor</code>) and <code>Ridge</code> with default setup and returns model scores in the form of a dataframe</td>
@@ -122,7 +122,7 @@
 <tr class="odd">
 <td>fit_classifier</td>
 <td>
-<code>train_df</code> , <code>target_col</code> , <code>numeric_feats</code> , <code>categorical_feats</code> , <code>text_col</code> , <code>cv</code>
+<code>train_df</code> , <code>target_col</code> , <code>numeric_feats</code> , <code>categorical_feats</code>, <code>cv</code>
 </td>
 <td><code>dataframe</code></td>
 <td>Preprocesses the data, fits baseline model(<code>Dummy Classifier</code>) and <code>Logistic Regression</code> with default setup and returns model scores in the form of a dataframe</td>

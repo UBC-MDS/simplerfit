@@ -9,14 +9,14 @@ Authors@R:
            ),
     person(given = "Reza",
            family = "Mirzazadeh",
-           role = "ctb",
+           role = "aut",
            ),
     person(given = "Sanchit",
            family = "Singh",
-           role = "ctb"),
+           role = "aut"),
            person(given = "Zhian",
            family = "Zoe",
-           role = "ctb"))
+           role = "aut"))
 Description: This package helps data scientists to clean the data, perform basic EDA, visualize graphical interpretations and analyse performance of the baseline model and basic Classification or Regression models, namely Logistic Regression, Ridge on their data.
 License: MIT + file LICENSE
 Encoding: UTF-8

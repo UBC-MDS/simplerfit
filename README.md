@@ -18,7 +18,7 @@ This package helps data scientists clean the data, perform basic EDA, visualize 
 | Function Name | Input                                                                                      | Output                        | Description                                                                                                                          |
 |---------------|--------------------------------------------------------------------------------------------|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | clean_data       | `dataframe`                                                                                | list of 3 dataframes          | Loads and cleans the dataset, removes NA rows, strip extra white spaces, etc  and returns clean dataframe along with `data.info()` , `data.describe()` as dataframes                                                     |
-| plot_distributions       | `dataframe`, `bins`, `dist_cols`, `class_label`              | Ggplot histogram plot object  | Creates numerical distribution plots on either all the numeric columns or the ones provided to it  |
+| plot_distributions       | `dataframe`, `bins`, `hist_cols`, `class_label`              | Ggplot histogram plot object  | Creates numerical distribution plots on either all the numeric columns or the ones provided to it  |
 | plot_corr       | `dataframe`, `corr`              | Ggplot correlation plot object  | Creates correlation plot for all the columns in the dataframe |
 | fit_regressor     | `train_df`, `target_col`, `numeric_feats`, `categorical_feats`, `cv`           | `dataframe`                   | Preprocesses the data, fits baseline model(`Dummy Regressor`) and `Ridge` with default setup and returns model scores in the form of a dataframe               |
 | fit_classifier    | `train_df` ,  `target_col` ,  `numeric_feats` ,  `categorical_feats`, `cv` | `dataframe`                   | Preprocesses the data, fits baseline model(`Dummy Classifier`) and `Logistic Regression` with default setup and returns model scores in the form of a dataframe|
@@ -58,6 +58,6 @@ This R package was developed by the following Master of Data Science program can
 
 ## License
 
-`simplerfit` was created by Reza Zoe Navya Sanchit. It is licensed under the terms of the MIT license.
+`simplerfit` was created by Navya, Reza, Sanchot, Zoe. It is licensed under the terms of the MIT license.
 
 

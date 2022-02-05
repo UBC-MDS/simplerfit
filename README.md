@@ -9,8 +9,8 @@
 [![pkgdown](https://github.com/UBC-MDS/simplerfit/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/UBC-MDS/simplerfit/actions/workflows/pkgdown.yaml)
 
 
-A R package that cleans the data, does basic EDA and returns scores for basic classification and regression models.
-This package helps data scientists to clean the data, perform basic EDA, visualize graphical interpretations and analyse performance of the baseline model and basic Classification or Regression models, namely Logistic Regression, Ridge on their data.
+R package that cleans the data, does basic EDA and returns scores for basic classification and regression models.
+This package helps data scientists clean the data, perform basic EDA, visualize graphical interpretations and analyse performance of the baseline model and basic Classification or Regression models, namely Logistic Regression, Ridge on their data.
 
 
 ## Functions
@@ -18,10 +18,10 @@ This package helps data scientists to clean the data, perform basic EDA, visuali
 | Function Name | Input                                                                                      | Output                        | Description                                                                                                                          |
 |---------------|--------------------------------------------------------------------------------------------|-------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|
 | clean_data       | `dataframe`                                                                                | list of 3 dataframes          | Loads and cleans the dataset, removes NA rows, strip extra white spaces, etc  and returns clean dataframe along with `data.info()` , `data.describe()` as dataframes                                                     |
-| plot_distributions       | `dataframe`, `bins`, `dist_cols`, `class_label`              | Altair histogram plot object  | creates numerical distribution plots on either all the numeric columns or the ones provided to it  |
-| plot_corr       | `dataframe`, `corr`              | Altair correlation plot object  | creates creates correlation plot for all the columns in the dataframe |
-| fit_regressor     | `train_df`, `target_col`, `numeric_feats`, `categorical_feats`, `text_col`, `cv`           | `dataframe`                   | Preprocesses the data, fits baseline model(`Dummy Regressor`) and `Ridge` with default setup and returns model scores in the form of a dataframe               |
-| fit_classifier    | `train_df` ,  `target_col` ,  `numeric_feats` ,  `categorical_feats` ,  `text_col` ,  `cv` | `dataframe`                   | Preprocesses the data, fits baseline model(`Dummy Classifier`) and `Logistic Regression` with default setup and returns model scores in the form of a dataframe|
+| plot_distributions       | `dataframe`, `bins`, `dist_cols`, `class_label`              | Ggplot histogram plot object  | Creates numerical distribution plots on either all the numeric columns or the ones provided to it  |
+| plot_corr       | `dataframe`, `corr`              | Ggplot correlation plot object  | Creates correlation plot for all the columns in the dataframe |
+| fit_regressor     | `train_df`, `target_col`, `numeric_feats`, `categorical_feats`, `cv`           | `dataframe`                   | Preprocesses the data, fits baseline model(`Dummy Regressor`) and `Ridge` with default setup and returns model scores in the form of a dataframe               |
+| fit_classifier    | `train_df` ,  `target_col` ,  `numeric_feats` ,  `categorical_feats`, `cv` | `dataframe`                   | Preprocesses the data, fits baseline model(`Dummy Classifier`) and `Logistic Regression` with default setup and returns model scores in the form of a dataframe|
 
 ### Our Package in R Ecosystem
 

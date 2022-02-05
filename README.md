@@ -58,6 +58,6 @@ This R package was developed by the following Master of Data Science program can
 
 ## License
 
-`simplerfit` was created by Navya, Reza, Sanchot, Zoe. It is licensed under the terms of the MIT license.
+`simplerfit` was created by Navya, Reza, Sanchit, Zoe. It is licensed under the terms of the MIT license.
 
 

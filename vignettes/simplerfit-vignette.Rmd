@@ -52,11 +52,11 @@ plot_distributions(clean_df, bins = 30, hist_cols=c("gdppercap"))
 ### Regression
 If the problem is of a regression nature, the RMSE scores of dummy regressor, linear regressor and ridge are compared
 ```{r fig.width=7, fig.height=4}
-invisible(capture.output(suppressWarnings(fit_regressor(clean_df, 
+suppressWarnings(fit_regressor(clean_df, 
               target_col="gdppercap", 
               numeric_feats=c("year", "lifeexp", "pop"), 
               categorical_feats <- c("continent"), 
-              cv =5))))
+              cv =5))
 ```
 
 ### Classification
